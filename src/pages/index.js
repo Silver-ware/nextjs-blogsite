@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
 // import localFont from "next/font/local";
 
 // const geistSans = localFont({
@@ -15,6 +15,10 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <Navbar/>
+    <Layout>
+        <div className="h-[800px]">
+          {/* div inside main here. */}
+        </div>
+    </Layout>
   );
 }
