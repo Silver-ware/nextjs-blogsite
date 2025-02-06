@@ -11,8 +11,8 @@ function Navbar(props) {
   }
   return (
 
-    <div className="w-full bg-[#213555] bg-opacity-[49%] h-max text-white pt-[25px] px-9 pb-[20px] fixed
-      flex gap-[70px] item-center justify-center">
+    <div className="w-full bg-[#213555] bg-opacity-[49%] h-max text-white pt-[25px] px-9 py-[20px] fixed
+      flex gap-[70px] items-center justify-center">
       <h1 className="text-[57px] font-semibold tracking-tight leading-[64px]">BLOGFIX</h1>
       <ul className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
         <li className="border-b-[3px] border-[#050D1B] cursor-pointer hover:scale-110 transition-all ease-in-out
