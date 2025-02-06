@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function Footer() {
   return (
-    <div className="fixed bottom-0 bg-[#213555] w-full h-[425px] p-[10px] flex justify-center items-center">
+    <div className="bg-[#213555] w-full h-[425px] p-[10px] flex justify-center items-center">
       <div className="flex flex-col w-full h-full items-center justify-center p-[10px] gap-[25px]">
         <div className="p-[10px] h-max w-full flex justify-center items-center">
           <Image
