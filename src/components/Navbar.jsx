@@ -7,7 +7,7 @@ function Navbar(props) {
   const navbarRoute = useRouter();
 
   const navigateTo = (path) => {
-    navbarRoute.push(path);
+    navbarRoute.replace(path);
   }
   return (
 
@@ -16,13 +16,19 @@ function Navbar(props) {
       <h1 className="text-[57px] font-semibold tracking-tight leading-[64px]">BLOGFIX</h1>
       <ul className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
         <li className="border-b-[3px] border-[#050D1B] cursor-pointer hover:scale-110 transition-all ease-in-out
-          p-[10px] flex items-center text-[28px] font-semibold text-white"
-          onClick={() => navigateTo("/")}>Home</li>
-        <li className="border-b-[3px] border-[#D8C4B6BF] cursor-pointer hover:scale-110 transition-all ease-in-out
-          p-[10px] flex items-center text-[28px] font-semibold text-[#FFFFFF80]">Blog</li>
-        <li className="border-b-[3px] border-[#D8C4B6BF] cursor-pointer hover:scale-110 transition-all ease-in-out
-          p-[10px] flex items-center text-[28px] font-semibold text-[#FFFFFF80]"
-          onClick={() => navigateTo("/create")}>Create</li>
+          p-[10px] flex items-center"
+          onClick={() => navigateTo("/")}>
+            <span className='text-[28px] font-semibold text-white'>Home</span>
+        </li>
+        <li className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
+          p-[10px] flex items-center hover:[&>span]:opacity-100">
+            <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Blog</span>
+        </li>
+        <li className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 transition-all ease-in-out
+          p-[10px] flex items-center hover:[&>span]:opacity-100"
+          onClick={() => navigateTo("/create")}>
+             <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Create</span>
+        </li>
       </ul>
         <Image
           src="/Login.png"
