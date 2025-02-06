@@ -1,12 +1,42 @@
 import Link from "next/link";
 import { BiLogoGmail } from "react-icons/bi";
 import { BiLogoFacebook } from "react-icons/bi";
+import Carousel from "../carousel/Carousel";
+import { useState } from "react";
 export default function AuthForm() {
+
+      const [loginEmail, setLoginEmail] = useState("");
+      const [loginPass, setLoginPass] = useState("");
+
+      const [registerName, setRegisterName] = useState("");
+      const [registerLast, setRegisterLast] = useState("");
+      const [registerEmail, setRegisterEmail] = useState("");
+      const [registerPass, setRegisterPass] = useState("");
+      
+      
+      const [toggle, setToggle] = useState(true);
+  
+      const toggleHandler = () =>{
+          setLoginEmail("")
+          setLoginPass("")
+          setRegisterName("")
+          setRegisterLast("")
+          setRegisterEmail("")
+          setRegisterPass("")
+          setToggle(!toggle);
+      }
+
+
   return (
-    <div className="w-full bg-[#213555] rounded-[25px] flex p-[20px]">
-      <div className="w-full h-full p-[40px] gap-[20px] flex flex-col">
+    <div className="w-full bg-[#213555] rounded-[25px] flex p-[20px] relative">
+
+      <Carousel toggle={toggle}/>
+
+{/* Log In Form */}
+
+      <div className={`w-full h-full p-[40px] gap-[20px] flex flex-col ${toggle? 'pointer-events-none' : ''} ${toggle? 'opacity-0' : 'opacity-100'}  transition-all ease-in-out duration-500`}>
         <div className="w-full gap-[30px] p-[10px] flex flex-col">
-          <h1 className="font-bold text-[40px] text-[#F5EFE7]">Welcome Back</h1>
+          <h1 className="font-bold text-[40px] text-[#F5EFE7] italic">Welcome Back</h1>
           <p className="font-light italic text-[15px] text-[#F5EFE7] opacity-[80%]">
             Your story continues—log in and keep sharing your voice with the
             world!
@@ -18,11 +48,15 @@ export default function AuthForm() {
               type="text"
               className="w-full h-[45px] rounded-[6px] p-[10px] gap-[10px] bg-[#3E5879A6] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white border-none focus:outline-2 focus:outline-white placeholder:text-[#797979] placeholder:opacity-[64%]"
               placeholder="Email"
+              value={loginEmail}
+              onChange={(e)=>{setLoginEmail(e.target.value)}}
             />
             <input
               type="text"
               className="w-full h-[45px] rounded-[6px] p-[10px] gap-[10px] bg-[#3E5879A6] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white border-none focus:outline-2 focus:outline-white placeholder:text-[#797979] placeholder:opacity-[64%]"
               placeholder="Password"
+              value={loginPass}
+              onChange={(e)=>{setLoginPass(e.target.value)}}
             />
           </div>
           <div className="p-[10px] flex gap-[10px] w-full items-center">
@@ -65,23 +99,23 @@ export default function AuthForm() {
         </div>
 
         <div className="w-full flex justify-center items-center p-[10px]">
-          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide">
+          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide flex gap-[5px]">
             Don&apos;t have an account yet?
-            <a
-              href="#"
-              className="font-bold text-[#3E5879] underline underline-offset-[17%] hover:text-[#F5EFE7] transition-all duration-100 ease-in-out"
+            <p
+              className="font-bold text-[#3E5879] underline underline-offset-[17%] hover:text-[#F5EFE7] transition-all duration-100 ease-in-out cursor-pointer"
+              onClick={(e)=>{toggleHandler(e)}}
             >
               Signup
-            </a>
+            </p>
           </p>
         </div>
       </div>
 
+{/* Sign Up Form */}
 
-
-      <div className="w-full h-full p-[40px] gap-[20px] flex flex-col">
+      <div className={`w-full h-full p-[40px] gap-[20px] flex flex-col ${toggle?''  :'pointer-events-none' } ${toggle? 'opacity-100' : 'opacity-0'} transition-all ease-in-out duration-500`}>
         <div className="w-full gap-[30px] p-[10px] flex flex-col">
-          <h1 className="font-bold text-[40px] text-[#F5EFE7]">Create an account</h1>
+          <h1 className="font-bold text-[40px] text-[#F5EFE7] italic">Create an account</h1>
           <p className="font-light italic text-[15px] text-[#F5EFE7] opacity-[80%]">
           Join today to  sharing your story, because every voice deserves to be heard!
           </p>
@@ -94,11 +128,15 @@ export default function AuthForm() {
               type="text"
               className="w-full h-[45px] rounded-[6px] p-[10px] gap-[10px] bg-[#3E5879A6] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white border-none focus:outline-2 focus:outline-white placeholder:text-[#797979] placeholder:opacity-[64%]"
               placeholder="First Name"
+              value={registerName}
+              onChange={(e)=>{setRegisterName(e.target.value)}}
             />
             <input
               type="text"
               className="w-full h-[45px] rounded-[6px] p-[10px] gap-[10px] bg-[#3E5879A6] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white border-none focus:outline-2 focus:outline-white placeholder:text-[#797979] placeholder:opacity-[64%]"
               placeholder="Last Name"
+              value={registerLast}
+              onChange={(e)=>{setRegisterLast(e.target.value)}}
             />
           </div>
 
@@ -107,11 +145,15 @@ export default function AuthForm() {
               type="text"
               className="w-full h-[45px] rounded-[6px] p-[10px] gap-[10px] bg-[#3E5879A6] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white border-none focus:outline-2 focus:outline-white placeholder:text-[#797979] placeholder:opacity-[64%]"
               placeholder="Email"
+              value={registerEmail}
+              onChange={(e)=>{setRegisterEmail(e.target.value)}}
             />
             <input
               type="text"
               className="w-full h-[45px] rounded-[6px] p-[10px] gap-[10px] bg-[#3E5879A6] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white border-none focus:outline-2 focus:outline-white placeholder:text-[#797979] placeholder:opacity-[64%]"
               placeholder="Enter your password"
+              value={registerPass}
+              onChange={(e)=>{setRegisterPass(e.target.value)}}
             />
           </div>
 
@@ -156,14 +198,14 @@ export default function AuthForm() {
         </div>
 
         <div className="w-full flex justify-center items-center p-[10px]">
-          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide">
-          Already have an account?{" "}
-            <a
-              href="#"
-              className="font-bold text-[#3E5879] underline underline-offset-[17%] hover:text-[#F5EFE7] transition-all duration-100 ease-in-out"
+          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide flex gap-[5px]">
+          Already have an account? {" "}
+            <p
+              className="font-bold text-[#3E5879] underline underline-offset-[17%] hover:text-[#F5EFE7] transition-all duration-100 ease-in-out cursor-pointer"
+              onClick={(e)=>{toggleHandler(e)}}
             >
-              Login
-            </a>
+               Login
+            </p>
           </p>
         </div>
       </div>
