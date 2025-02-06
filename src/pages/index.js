@@ -1,5 +1,4 @@
 // import Image from "next/image";
-import Layout from "@/components/Layout";
 // import localFont from "next/font/local";
 
 // const geistSans = localFont({
@@ -15,10 +14,6 @@ import Layout from "@/components/Layout";
 
 export default function Home() {
   return (
-    <Layout>
-        <div className="h-[800px]">
-          {/* div inside main here. */}
-        </div>
-    </Layout>
+    <div></div>
   );
 }
