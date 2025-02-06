@@ -83,7 +83,6 @@ export default function AuthForm() {
             <div className="w-[214px] flex gap-[10px] border border-[#F5EFE7] rounded-[6px] h-full p-[10px] items-center justify-center hover:scale-105 transition-all duration-100 ease-in-out cursor-pointer">
               <BiLogoGmail className="text-[#F5EFE7]" />
               <p className="text-[#F5EFE7] text-[15px] font-bold tracking-wide">
-
                 Login Account
               </p>
             </div>
@@ -98,16 +97,16 @@ export default function AuthForm() {
           <div></div>
         </div>
 
-        <div className="w-full flex justify-center items-center p-[10px]">
-          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide flex gap-[5px]">
+        <div className="w-full flex justify-center items-center p-[10px] gap-[5px]">
+          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide">
             Don&apos;t have an account yet?
-            <p
+          </p>
+          <p
               className="font-bold text-[#3E5879] underline underline-offset-[17%] hover:text-[#F5EFE7] transition-all duration-100 ease-in-out cursor-pointer"
               onClick={(e)=>{toggleHandler(e)}}
             >
               Signup
             </p>
-          </p>
         </div>
       </div>
 
@@ -197,16 +196,16 @@ export default function AuthForm() {
           <div></div>
         </div>
 
-        <div className="w-full flex justify-center items-center p-[10px]">
-          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide flex gap-[5px]">
+        <div className="w-full flex justify-center items-center p-[10px] gap-[5px]">
+          <p className="font-bold text-[#FFFFFF] text-[15px] tracking-wide">
           Already have an account? {" "}
-            <p
+          </p>
+          <p
               className="font-bold text-[#3E5879] underline underline-offset-[17%] hover:text-[#F5EFE7] transition-all duration-100 ease-in-out cursor-pointer"
               onClick={(e)=>{toggleHandler(e)}}
             >
                Login
             </p>
-          </p>
         </div>
       </div>
     </div>
