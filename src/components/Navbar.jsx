@@ -1,9 +1,10 @@
 // import React from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useState, useEffect } from 'next/router';
 
 import Image from 'next/image'
 
-function Navbar(props) {
+
+function Navbar(hasNavBG) {
   const navbarRoute = useRouter();
 
   const navigateTo = (path) => {
@@ -11,8 +12,8 @@ function Navbar(props) {
   }
   return (
 
-    <div className="w-full bg-[#213555] bg-opacity-[49%] h-max text-white pt-[25px] px-9 py-[20px] fixed
-      flex gap-[70px] items-center justify-center">
+    <div className={`${hasNavBG === true? 'bg-[#213555]': 'bg-transparent'} w-full bg-opacity-[49%] h-max text-white pt-[25px] px-9 py-[20px] absolute
+      flex gap-[70px] items-center justify-center z-50`}>
       <h1 className="text-[57px] font-semibold tracking-tight leading-[64px]">BLOGFIX</h1>
       <ul className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
         <li className="border-b-[3px] border-[#050D1B] cursor-pointer hover:scale-110 transition-all ease-in-out
@@ -36,7 +37,7 @@ function Navbar(props) {
           height={50}
           className='h-[50px] cursor-pointer hover:scale-125 transition-all ease-in-out'
           alt="Login Button"
-          onClick={() => navigateTo("/login")}
+          onClick={() => navigateTo("/auth")}
         />
     </div>
   );
