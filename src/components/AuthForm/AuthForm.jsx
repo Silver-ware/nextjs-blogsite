@@ -8,7 +8,7 @@ export default function AuthForm() {
       <div className="w-full h-full p-[40px] gap-[20px] flex flex-col">
           <div className="w-full gap-[30px] p-[10px] flex flex-col">
             <h1 className="font-bold text-[40px] text-[#F5EFE7]">Welcome Back</h1>
-            <p className="font-light italic text-[15px] text-[#F5EFE7CC] opacity-[80%]">Your story continues—log in and keep sharing your voice with the world!</p>
+            <p className="font-light italic text-[15px] text-[#F5EFE7] opacity-[80%]">Your story continues—log in and keep sharing your voice with the world!</p>
           </div>
           <div>
             <div className="w-full p-[10px] flex flex-col gap-[10px]">
