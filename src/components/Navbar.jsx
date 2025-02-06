@@ -1,7 +1,10 @@
 // import React from 'react';
+import { useRouter } from 'next/router';
+
 import Image from 'next/image'
 
 function Navbar(props) {
+  const navbar = useRouter();
   return (
 
     <div className="w-full bg-[#ffffff57] border-b border-b-white h-max text-white pt-[25px] px-9 pb-[20px] fixed
