@@ -1,4 +1,5 @@
 // import Image from "next/image";
+import Navbar from "@/components/Navbar";
 // import localFont from "next/font/local";
 
 // const geistSans = localFont({
@@ -12,10 +13,8 @@
 //   weight: "100 900",
 // });
 
-import Footer from "../components/Footer";
-
 export default function Home() {
   return (
-    <Footer/>
+    <Navbar/>
   );
 }
