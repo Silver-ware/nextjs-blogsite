@@ -1,4 +1,5 @@
 // import Image from "next/image";
+import Layout from "@/components/Layout";
 // import localFont from "next/font/local";
 
 // const geistSans = localFont({
@@ -12,10 +13,12 @@
 //   weight: "100 900",
 // });
 
-import Footer from "../components/Footer";
-
 export default function Home() {
   return (
-    <Footer/>
+    <Layout>
+        <div className="h-[800px]">
+          {/* div inside main here. */}
+        </div>
+    </Layout>
   );
 }
