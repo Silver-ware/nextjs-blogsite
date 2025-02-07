@@ -1,5 +1,8 @@
 import Ad from "@/components/Ad/Ad";
 import Cards from "@/components/Cards/Cards";
+import TestimonialsCarousel from "@/components/carousel/TestimonialsCarousel";
+import { useState } from "react";
+import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 
 const blogsCard = [
   {
@@ -76,7 +79,63 @@ const blogsCard = [
   },
 ]
 
+const testimonialStatements = [
+  {
+    "userId": 1,
+    "name": "Alex",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/44",
+  },
+  {
+    "userId": 2,
+    "name": "Jenny",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/92",
+  },
+  {
+    "userId": 3,
+    "name": "Ian",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/26",
+  },
+  {
+    "userId": 4,
+    "name": "Emman",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/44",
+  },
+  {
+    "userId": 5,
+    "name": "Brix",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/92",
+  },
+  {
+    "userId": 6,
+    "name": "Jerry",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/26",
+  }
+]
+
 export default function Home() {
+  const [firstActiveT, setFirstT] = useState(0);
+  const [lastActiveT, setLastT] = useState(3);
+
+  const handleTestimonials = (direction) => {
+      if(direction === "next"){
+        if(!(lastActiveT === testimonialStatements.length)){
+          setFirstT(firstActiveT+1);
+          setLastT(lastActiveT+1);
+        }
+      }
+      if(direction === "prev"){
+        if(!(firstActiveT === 0)){
+          setFirstT(firstActiveT-1);
+          setLastT(lastActiveT-1);
+        }
+      }
+  }
   return (
     <>
       <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
@@ -97,13 +156,23 @@ export default function Home() {
         <div className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
           grid grid-cols-4 place-items-center gap-[40px]'>
             {
-              blogsCard.map((data) => <Cards userID={data.userId} name={data.name} title={data.title} body={data.body} profileImage={data.profileImage} date={data.date} blogImage={data.blogImage}/>)
+              blogsCard.map((data) => <Cards data={data}/>)
             }
             <button className='col-span-4 w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
               hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'>
                 Load More
             </button>
         </div>
+      </div>
+      <div className="h-[500px] w-full py-[30px] px-[10px] flex items-center justify-center
+        gap-[80px] bg-[linear-gradient(180deg,#F5EFE7_0%,_#3E5879_100%)]">
+        <IoIosArrowBack className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("prev")}/>
+        {/* var film = this.props.data.filter((item, idx) => idx < 5).map(item => {
+          return <FilmItem key={item.id} film={item} />
+        }); */}
+        {testimonialStatements.slice(firstActiveT, lastActiveT).map((data, index)=> <TestimonialsCarousel data={data} index={index}/>)}
+        
+        <IoIosArrowForward className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("next")}/>
       </div>
       <Ad/>
     </>
