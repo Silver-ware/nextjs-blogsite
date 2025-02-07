@@ -41,7 +41,7 @@ export default function index() {
 
                 </div>
 
-                <div className="w-full">
+                <div className="w-full p-[10px]">
                     <textarea name="" id=""
                     placeholder="Description" 
                     maxLength={250}
@@ -72,9 +72,12 @@ export default function index() {
 
             </div>
 
-            <button className="w-full bg-white p-[10px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[6px] text-[15px] font-bold text-[#3E5879] tracking-wide hover:scale-105 scale-100 transition-all duration-200 ease-in-out">
+            <div className="px-[10px] w-full">
+                <button className="w-full bg-white p-[10px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[6px] text-[15px] font-bold text-[#3E5879] tracking-wide hover:scale-105 scale-100 transition-all duration-200 ease-in-out">
                 SUBMIT BLOG
-            </button>
+                </button>
+            </div>
+
         </div>
     </div>
   )
