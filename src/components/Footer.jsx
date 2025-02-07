@@ -13,7 +13,7 @@ function Footer() {
             alt="Logo Image"
           />
         </div>
-        <div className='w-full h-max p-[10px] flex flex-col text-center gap-[10px]'>
+        <div className='w-full h-max p-[10px] flex flex-col text-center gap-[10px] text-white'>
           <span className='font-normal text-base'>1234 Horizon Lane, Suite 500</span>
           <span className='font-normal text-base'>Brooklyn, NY 11201</span>
           <span className='font-normal text-base'>United States</span>
@@ -34,7 +34,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex w-full h-full p-[10px] gap-[10px]">
+      <div className="flex w-full h-full p-[10px] gap-[10px] text-white">
         <div className="h-full w-max flex flex-col py-[104px] px-[63px]">
           <span className="text-[17px]">About Us</span>
           <span className="text-[17px]">Our Services</span>
