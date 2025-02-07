@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AiOutlineSelect } from "react-icons/ai";
 
-function Cards({userId, title, body, name, profileImage, date, blogImage}) {
-  console.log(blogImage);
+function Cards({userID, title, body, name, profileImage, date, blogImage}) {
+
   return (
-    <div key={userId} className='w-[294px] h-[406px] flex flex-col gap-2.5'>
+    <div key={userID} className='w-[294px] h-[406px] flex flex-col gap-2.5'>
       <div style={{ backgroundImage: `url(${blogImage})`, backgroundSize: 'cover' }} className={`relative rounded-[5px] h-full w-full shadow-[0px_1px_7px_0px_#213555] 
         bg-cover contrast-125 bg-bottom
         before:content-[""] before:h-full before:w-full before:bg-black/40 before:absolute before:rounded-[5px]`}>
@@ -33,7 +33,7 @@ function Cards({userId, title, body, name, profileImage, date, blogImage}) {
             </p>
           </div>
         </div>
-        <Link href="/view" style={{width: 68, height: 19, paddingBottom: 18}} className='pt-2.5 px-[5px] border-b-[1px] border-b-[#000000]
+        <Link href={`view/${userID}`} style={{width: 68, height: 19, paddingBottom: 18}} className='pt-2.5 px-[5px] border-b-[1px] border-b-[#000000]
           italic font-normal text-xs text-center leading-3 hover:font-semibold transition-all ease-in-out duration-500'>
           <span className='w-full'>View Blog</span>
         </Link>
