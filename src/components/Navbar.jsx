@@ -28,7 +28,7 @@ function Navbar(hasNavBG) {
     <div className={`${hasNavBG === true? 'bg-[#213555]': ''} w-full bg-opacity-[49%] h-max text-white pt-[25px] px-9 py-[20px] fixed
       flex gap-[70px] items-center justify-center z-50 ${bgColor} transition-all ease-in duration-200`}>
       <h1 className="text-[57px] font-semibold tracking-tight leading-[64px]">BLOGFIX</h1>
-      <ul className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
+      <div className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
         <Link 
           href="/"
           className="border-b-[3px] border-[#050D1B] cursor-pointer hover:scale-110 transition-all ease-in-out
@@ -45,7 +45,7 @@ function Navbar(hasNavBG) {
             p-[10px] flex items-center hover:[&>span]:opacity-100">
              <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Create</span>
         </Link>
-      </ul>
+      </div>
         <Link href="/auth">
           <Image
             src="/Login.png"
