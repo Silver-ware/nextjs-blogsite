@@ -3,12 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AiOutlineSelect } from "react-icons/ai";
 
-function Cards({userId, title, body}) {
+function Cards({userId, title, body, name, profileImage, date, blogImage}) {
+  console.log(blogImage);
   return (
     <div key={userId} className='w-[294px] h-[406px] flex flex-col gap-2.5'>
-      <div className='relative rounded-[5px] h-full w-full shadow-[0px_1px_7px_0px_#213555] 
-        bg-[url(/backgrounds/blog_cards_bg.jpg)] bg-cover contrast-125 bg-bottom
-        before:content-[""] before:h-full before:w-full before:bg-black/40 before:absolute before:rounded-[5px]'>
+      <div style={{ backgroundImage: `url(${blogImage})`, backgroundSize: 'cover' }} className={`relative rounded-[5px] h-full w-full shadow-[0px_1px_7px_0px_#213555] 
+        bg-cover contrast-125 bg-bottom
+        before:content-[""] before:h-full before:w-full before:bg-black/40 before:absolute before:rounded-[5px]`}>
         <button className='relative float-right m-2 hover:scale-105'>
           <AiOutlineSelect/>
         </button>
@@ -22,9 +23,9 @@ function Cards({userId, title, body}) {
         </div>
         <div className='w-full h-full flex flex-col gap-[5px]'>
           <div className='w-full flex items-center justify-between gap-[10px]'>
-            <Image src="/user_assets/profile.jpg" width={20} height={20} className='rounded-[20px] h-[20px]' alt="User Profile"/>
-            <span className='text-[15px] w-full font-light leading-[36px]'>Jenny the Explorer</span>
-            <span className='italic text-[12px] font-extralight leading-[20px]'>09/18/2025</span>
+            <Image src={`${profileImage}`} width={20} height={20} className='rounded-[20px] h-[20px]' alt="User Profile"/>
+            <span className='text-[15px] w-full font-light leading-[36px]'>{name}</span>
+            <span className='italic text-[12px] font-extralight leading-[20px]'>{date}</span>
           </div>
           <div className='w-full h-full flex items-center justify-center gap-2.5'>
             <p className='text-clip text-center italic text-[11px] leading-[10px]'>
