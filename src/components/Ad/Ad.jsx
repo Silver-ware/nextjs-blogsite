@@ -5,9 +5,9 @@ export default function Ad() {
 
     <div className="w-full pt-[100px] px-[100px] pb-[70px] bg-[#3E5879] text-center">
 
-      <div className="rounded-[10px] relative w-full flex flex-col items-center justify-center gap-[10px] shadow-[inset_0_4px_10px_rgba(0,0,0,0.25)] contrast-125">
+      <div className="rounded-[10px] relative w-full flex flex-col items-center justify-center gap-[10px] contrast-125">
         {/* Background img */}
-        <div className="rounded-[10px] absolute inset-0 contrast-125 bg-[url(https://s3-alpha-sig.figma.com/img/d76a/3243/3fab37d082bbd4083db5f9b240c6fcb4?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oJmuXsE7bEd27u8dKsDODxkKGKR~5qPHOBvGOov7QeuIJSJDs4S9tEo~3b5Smye4HvcoeuJ4VnxPj4Lp2kM~t4WXtmxsccAAvaph2jFRZWPrA8Oz13qAYK1VOPimkiSD737hHRCO5y4oQhzJqhU5WnCZ-nUD9q1GZAh4TAYhQEx-0PMYSflVCCZ~L0yFllQ61WUIUuKmkFplFrONkp79SFyPNTFBHcTIw2N~1hBkuzc9XhibcKncP0bEwYg1j1CksfAuF2SXixx~QegTQUdXH4ArInYU6hxQ~tv8PRyFY90pBu0-QF4OFKVWK16M8HSsJ9WbknEVEVA57RZLUm6uAA__)] bg-cover bg-center"></div>
+        <div className="rounded-[10px] absolute inset-0 contrast-125 shadow-[inset_0_4px_10px_rgba(0,0,0,0.25)] 25 bg-[url(https://s3-alpha-sig.figma.com/img/d76a/3243/3fab37d082bbd4083db5f9b240c6fcb4?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oJmuXsE7bEd27u8dKsDODxkKGKR~5qPHOBvGOov7QeuIJSJDs4S9tEo~3b5Smye4HvcoeuJ4VnxPj4Lp2kM~t4WXtmxsccAAvaph2jFRZWPrA8Oz13qAYK1VOPimkiSD737hHRCO5y4oQhzJqhU5WnCZ-nUD9q1GZAh4TAYhQEx-0PMYSflVCCZ~L0yFllQ61WUIUuKmkFplFrONkp79SFyPNTFBHcTIw2N~1hBkuzc9XhibcKncP0bEwYg1j1CksfAuF2SXixx~QegTQUdXH4ArInYU6hxQ~tv8PRyFY90pBu0-QF4OFKVWK16M8HSsJ9WbknEVEVA57RZLUm6uAA__)] bg-cover bg-center"></div>
         
         <div className="absolute inset-0 bg-[#3E5879] opacity-60"></div>
         {/* Background img */}
