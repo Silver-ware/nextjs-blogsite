@@ -1,6 +1,9 @@
+import Ad from "@/components/Ad/Ad";
 
 export default function Home() {
   return (
+
+    <>
     <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
       bg-[length:100%] bg-no-repeat flex items-center justify-center flex-col gap-[34px]
       before:content-[''] before:h-full before:w-full before:bg-black/50 before:absolute">        
@@ -15,6 +18,10 @@ export default function Home() {
         <span className="px-[5px] text-white">Learn More</span>
       </button>
     </div>
+
+    <Ad />
+    
+    </>
   );
 }
 
