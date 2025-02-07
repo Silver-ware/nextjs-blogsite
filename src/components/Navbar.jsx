@@ -19,7 +19,6 @@ function Navbar(hasNavBG) {
     };
 
     window.addEventListener("scroll", handleScroll);
-    console.log(bgColor);
     // return () => window.removeEventLinkstener("scroll", handleScroll);
   }, [bgColor]);
   
@@ -51,7 +50,7 @@ function Navbar(hasNavBG) {
             src="/Login.png"
             width={50}
             height={50}
-            className='h-[50px] cursor-pointer hover:scale-125 transition-all ease-in-out'
+            className='cursor-pointer hover:scale-125 transition-all ease-in-out'
             alt="Login Button"
           />
         </Link>

@@ -114,7 +114,7 @@ export default function Home() {
         <div id="blog" className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
           grid grid-cols-4 place-items-center gap-[40px]'>
             {
-              blogsCard.map((data) => <Cards userID={data.userId} name={data.name} title={data.title} body={data.body} profileImage={data.profileImage} date={data.date} blogImage={data.blogImage}/>)
+              blogsCard.map((data) => <Cards key={data.userId} userID={data.userId} name={data.name} title={data.title} body={data.body} profileImage={data.profileImage} date={data.date} blogImage={data.blogImage}/>)
             }
             <button className='col-span-4 w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
               hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'>
