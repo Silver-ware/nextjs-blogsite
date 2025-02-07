@@ -2,13 +2,11 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 
-export default function Layout ({children}) {
+export default function Layout ({children, hasNavBG = false, newBG}) {
   return(
     <>
-      <Navbar/>
-      <main>
+      <Navbar hasNavBG={hasNavBG}/>
         {children}
-      </main>
       <Footer/>
     </>
   )
