@@ -1,3 +1,4 @@
+import Ad from "@/components/Ad/Ad";
 import Cards from "@/components/Cards/Cards";
 
 const blogsCard = [
@@ -72,6 +73,7 @@ export default function Home() {
             </button>
         </div>
       </div>
+      <Ad/>
     </>
 
   );
