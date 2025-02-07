@@ -53,7 +53,6 @@ function Navbar(hasNavBG) {
             height={50}
             className='h-[50px] cursor-pointer hover:scale-125 transition-all ease-in-out'
             alt="Login Button"
-            onCLinkck={() => navigateTo("/auth")}
           />
         </Link>
     </div>
