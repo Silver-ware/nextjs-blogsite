@@ -44,8 +44,8 @@ export default function index() {
     <div className="bg-gradient-to-b from-white from-[80%] to-[#3E5879] w-full h-[1024px] flex flex-col relative">
         <div style={{ backgroundImage: `url(${blog?.blogImage})`}} className="flex items-end w-full h-full bg-black bg-center bg-cover">
             <div className="w-full flex justify-center text-white p-[10px] gap-[10px]">
-                {tag.map(item => (
-                    <div className="px-[10px] bg-white bg-opacity-[25%] py-[3px] cursor-pointer hover:scale-105 scale-100 transition-all duration-200 ease-in-out">{item}</div>
+                {tag.map((item, index) => (
+                    <div key={index} className="px-[10px] bg-white bg-opacity-[25%] py-[3px] cursor-pointer hover:scale-105 scale-100 transition-all duration-200 ease-in-out">{item}</div>
                 ))}   
             </div>
         </div>  
