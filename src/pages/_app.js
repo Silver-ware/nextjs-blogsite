@@ -4,7 +4,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { Roboto } from "next/font/google";
-import { title } from "process";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -13,12 +12,17 @@ const roboto = Roboto({
   display: "swap",
 });
 
+
 export default function App({ Component, pageProps }) {
   const routes = useRouter();
   const noLayout = ["/auth"];
 
   if(noLayout.includes(routes.pathname)){
-    return <Component {...pageProps} />
+    return (
+      <main className={roboto.className}>
+        <Component {...pageProps}/>
+      </main>
+    )
   } else{
     return (
       <>
@@ -26,9 +30,11 @@ export default function App({ Component, pageProps }) {
           <title>Blog Website</title>
           <meta name="description" content="This is the default description" />
         </Head>
-        <Layout hasNavBG={Component.hasNavBG !== false}>      
-            <Component {...pageProps} />
-        </Layout>
+        <main className={roboto.className}>
+          <Layout hasNavBG={Component.hasNavBG !== false}>      
+              <Component {...pageProps} />
+          </Layout>
+        </main>
       </>
     );
   }
