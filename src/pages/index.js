@@ -1,22 +1,5 @@
-// import Image from "next/image";
-import { useState, useEffect } from "react";
 
 export default function Home() {
-  // const [bgColor, setBgColor] = useState("");
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 50) {
-  //       setBgColor("bg-[#213555]");
-  //     } else {
-  //       setBgColor("");
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   return (
     <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
       bg-[length:100%] bg-no-repeat flex items-center justify-center flex-col gap-[34px]
