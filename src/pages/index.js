@@ -169,9 +169,7 @@ export default function Home() {
   const handleTestimonials = (direction) => {
       (direction == 'next') ?
         setStartActive((prev) => (prev+1) % totalTestimonials):
-        setStartActive((prev) => (prev-1 + totalTestimonials) % totalTestimonials) ;
-      
-      console.log("Starting", startActive);
+        setStartActive((prev) => (prev-1 + totalTestimonials) % totalTestimonials) ;      
   }
 
   const activeTestimonials = [

@@ -10,8 +10,6 @@ export default function Index() {
     const router = useRouter();
     const {id} = router.query;
 
-    console.log(typeof id);
-
     const [numericID, setNumericID] = useState(null);
     const [blog, setBlog] = useState(null);
     const [tag, setTag] = useState([]);
@@ -36,7 +34,6 @@ export default function Index() {
     useEffect(()=>{
         if(blog !== null){
             setTag(blog.tags.split(','));
-            console.log(blog.tags);
         }
     },[blog]);
 
