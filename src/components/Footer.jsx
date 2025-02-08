@@ -10,7 +10,6 @@ function Footer() {
             src="/logo.png"
             width={181}
             height={60}
-            style={{width:181, height: 60}}
             alt="Logo Image"
           />
         </div>

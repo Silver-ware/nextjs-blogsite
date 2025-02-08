@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 
 
 function Navbar(hasNavBG) {
+  const {isInView} = useContext(ScrollContext);
+  const {setIsInView} = useContext(ScrollContext);
   const { scrollToSection } = useContext(ScrollContext);
 
   const [bgColor, setBgColor] = useState("");
@@ -17,6 +19,9 @@ function Navbar(hasNavBG) {
 
   useEffect(()=>{
     setActiveNav(currentPath);
+    if(currentPath == "/"){
+      setIsInView(false);
+    }
   },[currentPath])
 
 
@@ -42,7 +47,7 @@ function Navbar(hasNavBG) {
       <div className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
         <Link 
           href="/"
-          className={`border-b-[3px] ${activeNav == '/' ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } cursor-pointer hover:scale-110 transition-all ease-in-out
+          className={`border-b-[3px] ${activeNav == '/' && !isInView ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } cursor-pointer hover:scale-110 transition-all ease-in-out
             p-[10px] flex items-center`}>
             <span className='text-[28px] font-semibold text-white'>Home</span>
         </Link>
@@ -50,7 +55,7 @@ function Navbar(hasNavBG) {
 
         <button 
           onClick={scrollToSection}
-          className={`border-b-[2px] ${activeNav == '/blog' ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
+          className={`border-b-[2px] ${isInView && currentPath =='/' ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
             p-[10px] flex items-center hover:[&>span]:opacity-100`}>
             <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Blog</span>
         </button>
