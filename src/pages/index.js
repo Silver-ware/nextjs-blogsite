@@ -1,115 +1,229 @@
-import Image from "next/image";
-import localFont from "next/font/local";
+import Ad from "@/components/Ad/Ad";
+import Cards from "@/components/Cards/Cards";
+import TestimonialsCarousel from "@/components/carousel/TestimonialsCarousel";
+import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
+import { ScrollContext } from "@/components/Layout";
+import { useContext, useEffect, useRef, useState } from "react";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+  export const blogsCard = [
+    {
+      "userId": 1,
+      "name": "Jenny The Explorer",
+      "shares": 1823,
+      "profileImage": "https://avatar.iran.liara.run/public/92",
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "body": "quia et dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+      "date": "09/18/2025",
+      "tags": "Fun,Nature,Cute",
+      "blogImage": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fHww"
+    },
+    {
+      "userId": 2,
+      "name": "Ian The Explorer",
+      "shares": 18213,
+      "profileImage": "https://avatar.iran.liara.run/public/44",
+      "title": "qui est esse",
+      "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
+      "date": "09/20/2025",
+      "tags": "Nature,Cute",
+      "blogImage": "https://images.unsplash.com/photo-1506057213367-028a17ec52e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "userId": 3,
+      "name": "Garry The Explorer",
+      "shares": 12123,
+      "profileImage": "https://avatar.iran.liara.run/public/50",
+      "title": "ea dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae molestias quasi exercitationem repellat qui ipsa sit aut",
+      "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
+      "date": "12/20/2025",
+      "tags": "Games, Kids",
+      "blogImage": "https://images.unsplash.com/photo-1505820013142-f86a3439c5b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "userId": 4,
+      "name": "June The Explorer",
+      "shares": 2123,
+      "profileImage": "https://avatar.iran.liara.run/public/3",
+      "title": "eum et est occaecati",
+      "body": "ullam et saepe reiciendis voluptatem dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+      "date": "09/10/2019",
+      "tags": "Adventure,Comedy",
+      "blogImage": "https://plus.unsplash.com/premium_photo-1675826774815-35b8a48ddc2c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "userId": 5,
+      "name": "Madie The Explorer",
+      "shares": 23,
+      "profileImage": "https://avatar.iran.liara.run/public/99",
+      "title": "nesciunt quas odio",
+      "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
+      "date": "05/18/2025",
+      "tags": "Fun,Nature,Cute",
+      "blogImage": "https://images.unsplash.com/photo-1539634262233-7c0b48ab9503?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "userId": 6,
+      "name": "Justin The Explorer",
+      
+      "shares": 123,
+      "profileImage": "https://avatar.iran.liara.run/public/2",
+      "title": "dolorem eum magni eos aperiam quia",
+      "body": "ut dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
+      "date": "03/23/2025",
+      "tags": "Cute,Kid,Adult",
+      "blogImage": "https://plus.unsplash.com/premium_photo-1673697239984-b089baf7b6e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      "userId": 7,
+      "name": "Emman The Explorer",
+      "shares": 3,
+      "profileImage": "https://avatar.iran.liara.run/public/48",
+      "title": "magnam facilis autem",
+      "body": "dolore placeat quibusdam ea dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
+      "date": "05/22/2025",
+      "tags": "Sad,Gloomy",
+      "blogImage": "https://plus.unsplash.com/premium_photo-1666863909125-3a01f038e71f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      "userId": 8,
+      "name": "Brix The Explorer",
+      "shares": 18239,
+      "profileImage": "https://avatar.iran.liara.run/public/26",
+      "title": "dolorem dolore est ipsam",
+      "body": "dignissimos aperiam dolorem qui dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae eum\nfacilis dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
+      "date": "07/22/2022",
+      "tags": "Chaotic,Mess",
+      "blogImage": "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmF0dXJlfGVufDB8fDB8fHww",
+    },
+    {
+    "userId": 9,
+    "name": "Hubert The Explorer",
+    "shares": 7239,
+    "profileImage": "https://avatar.iran.liara.run/public/50",
+    "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+    "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
+    "date": "12/20/2025",
+    "tags": "Explore, Earth",
+    "blogImage": "https://images.unsplash.com/photo-1495584816685-4bdbf1b5057e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    "userId": 10,
+    "name": "Kenneth The Explorer",
+    "shares": 12239,
+    "profileImage": "https://avatar.iran.liara.run/public/3",
+    "title": "eum et est occaecati",
+    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+    "date": "09/10/2019",
+    "tags": "Relaxing, Wonder",
+    "blogImage": "https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+  },
+]
+
+const testimonialStatements = [
+  {
+    "userId": 1,
+    "name": "Alex",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/44",
+  },
+  {
+    "userId": 2,
+    "name": "Jenny",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/92",
+  },
+  {
+    "userId": 3,
+    "name": "Ian",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/26",
+  },
+  {
+    "userId": 4,
+    "name": "Emman",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/44",
+  },
+  {
+    "userId": 5,
+    "name": "Brix",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/50",
+  },
+  {
+    "userId": 6,
+    "name": "Jerry",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/26",
+  }
+]
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const {sectionRef} = useContext(ScrollContext);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const [cardLength, setLoadLength]  = useState(8)
+  const [startActive, setStartActive] = useState(0);
+
+  const totalTestimonials = testimonialStatements.length;
+
+  const handleTestimonials = (direction) => {
+      (direction == 'next') ?
+        setStartActive((prev) => (prev+1) % totalTestimonials):
+        setStartActive((prev) => (prev-1 + totalTestimonials) % totalTestimonials) ;      
+  }
+
+  const activeTestimonials = [
+    testimonialStatements[startActive],
+    testimonialStatements[(startActive+1) % totalTestimonials],
+    testimonialStatements[(startActive+2) % totalTestimonials],
+  ]
+
+  const handleLoadMore = () => {
+    setLoadLength(cardLength+4);
+  }
+
+
+  return (
+    <>
+      <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
+        bg-[length:100%] bg-no-repeat flex items-center justify-center flex-col gap-[34px]
+        before:content-[''] before:h-full before:w-full before:bg-black/50 before:absolute">        
+        <span className="relative text-white font-bold text-5xl text-center">
+            INSPIRATION FOR TRAVEL BY REAL PEOPLE
+        </span>
+        <span className="relative font-light italic text-[32px] text-white opacity-[55%]">
+            Touch some grass bruh.
+        </span>
+        <button className="relative rounded-[5px] border-4 border-white px-[5px] font-light text-2xl
+          hover:scale-110 hover:bg-black/50 transition-all ease-in-out">
+          <span className="px-[5px] text-white">Learn More</span>
+        </button>
+      </div>
+      <div ref={sectionRef} className="py-[60px] px-[30px] bg-[#F5EFE7] w-full flex">
+        <div className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
+          grid grid-cols-[repeat(auto-fit,minmax(294px,1fr))] auto-rows-auto place-items-center gap-[20px]'>
+            {
+              blogsCard.filter((item, index) => index < cardLength).map((data) => <Cards key={data.userId} data={data}/>)
+            }
+            <button className='col-span-full w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
+              hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'
+              onClick={() => handleLoadMore()}>
+                Load More
+            </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+      </div>
+      <div className="h-[500px] w-full py-[30px] px-[10px] flex items-center justify-center
+        gap-[80px] bg-[linear-gradient(180deg,#F5EFE7_0%,_#3E5879_100%)]">
+        <IoIosArrowBack className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("prev")}/>
+
+        {activeTestimonials.map((data, index)=> <TestimonialsCarousel key={index} data={data} index={index}/>)}
+        
+        <IoIosArrowForward className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("next")}/>
+      </div>
+      <Ad/>
+    </>
+
+    );
+  }
+
+  Home.hasNavBG = false;
