@@ -9,7 +9,7 @@ function Footer() {
           <Image
             src="/logo.png"
             width={181}
-            height={0}
+            height={60}
             alt="Logo Image"
           />
         </div>
