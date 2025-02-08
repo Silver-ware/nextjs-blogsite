@@ -69,15 +69,15 @@ function Navbar(hasNavBG) {
              <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Create</span>
         </Link>
       </div>
-        <Link href="/auth">
-          <Image
-            src="/Login.png"
-            width={50}
-            height={50}
-            className='cursor-pointer hover:scale-125 transition-all ease-in-out'
-            alt="Login Button"
-          />
-        </Link>
+      <Link href="/auth" className='h-[50px] w-[50px]'>
+        <Image
+          src="/Login.png"
+          width={50}
+          height={50}
+          className='h-[50px] min-w-[50px] cursor-pointer hover:scale-125 transition-all ease-in-out'
+          alt="Login Button"
+        />
+      </Link>
     </div>
   );
 }
