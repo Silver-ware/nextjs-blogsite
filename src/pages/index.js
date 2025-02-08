@@ -93,7 +93,7 @@ import { useContext, useEffect, useRef, useState } from "react";
       "body": "dignissimos aperiam dolorem qui dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae eum\nfacilis dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
       "date": "07/22/2022",
       "tags": "Chaotic,Mess",
-      "blogImage": "https://plus.unsplash.com/premium_photo-1666792562670-f8a139c265ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+      "blogImage": "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmF0dXJlfGVufDB8fDB8fHww",
     },
     {
     "userId": 9,
@@ -103,7 +103,8 @@ import { useContext, useEffect, useRef, useState } from "react";
     "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
     "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
     "date": "12/20/2025",
-    "blogImage": "https://images.unsplash.com/photo-1505820013142-f86a3439c5b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    "tags": "Explore, Earth",
+    "blogImage": "https://images.unsplash.com/photo-1495584816685-4bdbf1b5057e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     "userId": 10,
@@ -113,7 +114,8 @@ import { useContext, useEffect, useRef, useState } from "react";
     "title": "eum et est occaecati",
     "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
     "date": "09/10/2019",
-    "blogImage": "https://plus.unsplash.com/premium_photo-1675826774815-35b8a48ddc2c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    "tags": "Relaxing, Wonder",
+    "blogImage": "https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
   },
 ]
 
@@ -158,6 +160,7 @@ const testimonialStatements = [
 
 export default function Home() {
   const {sectionRef} = useContext(ScrollContext);
+
   const [cardLength, setLoadLength]  = useState(8)
   const [startActive, setStartActive] = useState(0);
 
@@ -198,7 +201,7 @@ export default function Home() {
           <span className="px-[5px] text-white">Learn More</span>
         </button>
       </div>
-      <div id="blog" className="py-[60px] px-[30px] bg-[#F5EFE7] w-full flex">
+      <div ref={sectionRef} className="py-[60px] px-[30px] bg-[#F5EFE7] w-full flex">
         <div className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
           grid grid-cols-[repeat(auto-fit,minmax(294px,1fr))] auto-rows-auto place-items-center gap-[20px]'>
             {
