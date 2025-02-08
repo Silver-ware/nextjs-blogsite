@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-
+import { ScrollContext } from './Layout';
 import Image from 'next/image'
 
 
 function Navbar(hasNavBG) {
+  const { scrollToSection } = useContext(ScrollContext);
 
   const [bgColor, setBgColor] = useState("");
 
@@ -34,12 +35,17 @@ function Navbar(hasNavBG) {
             p-[10px] flex items-center">
             <span className='text-[28px] font-semibold text-white'>Home</span>
         </Link>
-        <Link 
-          href="/#blog" 
+
+
+        <button 
+          // href="/#blog" 
+          onClick={scrollToSection}
           className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
             p-[10px] flex items-center hover:[&>span]:opacity-100">
             <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Blog</span>
-        </Link>
+        </button>
+
+
         <Link href="/create" className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 transition-all ease-in-out
             p-[10px] flex items-center hover:[&>span]:opacity-100">
              <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Create</span>
@@ -50,7 +56,7 @@ function Navbar(hasNavBG) {
             src="/Login.png"
             width={50}
             height={50}
-            className='h-auto w-auto cursor-pointer hover:scale-125 transition-all ease-in-out'
+            className='cursor-pointer hover:scale-125 transition-all ease-in-out'
             alt="Login Button"
           />
         </Link>

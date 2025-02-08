@@ -32,7 +32,7 @@ function Cards({data}) {
             </p>
           </div>
         </div>
-        <Link href="/view" style={{width: 68, height: 19, paddingBottom: 18}} className='pt-2.5 px-[5px] border-b-[1px] border-b-[#000000]
+        <Link href={`view/${userID}`} style={{width: 68, height: 19, paddingBottom: 18}} className='pt-2.5 px-[5px] border-b-[1px] border-b-[#000000]
           italic font-normal text-xs text-center leading-3 hover:font-semibold transition-all ease-in-out duration-500'>
           <span className='w-full'>View Blog</span>
         </Link>

@@ -8,9 +8,9 @@ function Footer() {
         <div className="p-[10px] h-max w-full flex justify-center items-center">
           <Image
             src="/logo.png"
-            width={181.4}
-            height={0}
-            className='h-auto'
+            width={181}
+            height={60}
+            style={{width:181, height: 60}}
             alt="Logo Image"
           />
         </div>
@@ -22,10 +22,11 @@ function Footer() {
         
         <div className='p-[10px] w-max h-max flex gap-[10px] items-center'>
           <div className="drop-shadow-[0px_4px_4px_#00000040] hover:scale-125 cursor-pointer">
-            <Image src="/icons/gmail.png" width={19} height={0} className='h-auto w-auto' alt="Gmail Logo" />
+            <Image src="/icons/github.png" width={20} height={20} alt="Github Logo" />
+            
           </div>
           <div className="drop-shadow-[0px_4px_4px_#00000040] hover:scale-125 cursor-pointer">
-            <Image src="/icons/github.png" width={20} height={20} alt="Github Logo" />
+            <Image src="/icons/gmail.png" width={19} height={19} style={{width: 19, height: 19}} alt="Gmail Logo"/>
           </div>
           <div className="drop-shadow-[0px_4px_4px_#00000040] hover:scale-125 cursor-pointer">
             <Image src="/icons/facebook.png" width={23} height={23} alt="Facebook Logo" />
