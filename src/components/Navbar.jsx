@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 function Navbar(hasNavBG) {
   const {isInView} = useContext(ScrollContext);
   const {setIsInView} = useContext(ScrollContext);
-  const { scrollToSection } = useContext(ScrollContext);
+  const {scrollToSection} = useContext(ScrollContext);
 
   const [bgColor, setBgColor] = useState("");
 
@@ -22,7 +22,7 @@ function Navbar(hasNavBG) {
     if(currentPath == "/"){
       setIsInView(false);
     }
-  },[currentPath])
+  },[currentPath, setIsInView])
 
 
 
