@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-export default function index() {
+export default function Index() {
     // set today's date and limit date picker to today
     const [date,setDate] = useState(null)
     useEffect(()=>{

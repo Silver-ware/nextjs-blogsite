@@ -5,7 +5,7 @@ import { blogsCard } from "..";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function index() {
+export default function Index() {
     // get params
     const router = useRouter();
     const {id} = router.query;
