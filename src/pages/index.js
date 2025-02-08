@@ -1,7 +1,9 @@
-  import Ad from "@/components/Ad/Ad";
-  import Cards from "@/components/Cards/Cards";
+import Ad from "@/components/Ad/Ad";
+import Cards from "@/components/Cards/Cards";
+import TestimonialsCarousel from "@/components/carousel/TestimonialsCarousel";
+import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 import { ScrollContext } from "@/components/Layout";
-  import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
   export const blogsCard = [
     {
@@ -91,44 +93,135 @@ import { ScrollContext } from "@/components/Layout";
       "body": "dignissimos aperiam dolorem qui dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae eum\nfacilis dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
       "date": "07/22/2022",
       "tags": "Chaotic,Mess",
-      "blogImage": "https://plus.unsplash.com/premium_photo-1666792562670-f8a139c265ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+      "blogImage": "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmF0dXJlfGVufDB8fDB8fHww",
     },
+    {
+    "userId": 9,
+    "name": "Hubert The Explorer",
+    "shares": 7239,
+    "profileImage": "https://avatar.iran.liara.run/public/50",
+    "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+    "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
+    "date": "12/20/2025",
+    "tags": "Explore, Earth",
+    "blogImage": "https://images.unsplash.com/photo-1495584816685-4bdbf1b5057e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    "userId": 10,
+    "name": "Kenneth The Explorer",
+    "shares": 12239,
+    "profileImage": "https://avatar.iran.liara.run/public/3",
+    "title": "eum et est occaecati",
+    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+    "date": "09/10/2019",
+    "tags": "Relaxing, Wonder",
+    "blogImage": "https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+  },
+]
+
+const testimonialStatements = [
+  {
+    "userId": 1,
+    "name": "Alex",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/44",
+  },
+  {
+    "userId": 2,
+    "name": "Jenny",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/92",
+  },
+  {
+    "userId": 3,
+    "name": "Ian",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/26",
+  },
+  {
+    "userId": 4,
+    "name": "Emman",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/44",
+  },
+  {
+    "userId": 5,
+    "name": "Brix",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/50",
+  },
+  {
+    "userId": 6,
+    "name": "Jerry",
+    "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
+    "profileImage": "https://avatar.iran.liara.run/public/26",
+  }
+]
+
+export default function Home() {
+  const {sectionRef} = useContext(ScrollContext);
+
+  const [cardLength, setLoadLength]  = useState(8)
+  const [startActive, setStartActive] = useState(0);
+
+  const totalTestimonials = testimonialStatements.length;
+
+  const handleTestimonials = (direction) => {
+      (direction == 'next') ?
+        setStartActive((prev) => (prev+1) % totalTestimonials):
+        setStartActive((prev) => (prev-1 + totalTestimonials) % totalTestimonials) ;      
+  }
+
+  const activeTestimonials = [
+    testimonialStatements[startActive],
+    testimonialStatements[(startActive+1) % totalTestimonials],
+    testimonialStatements[(startActive+2) % totalTestimonials],
   ]
 
-  export default function Home() {
+  const handleLoadMore = () => {
+    setLoadLength(cardLength+4);
+  }
 
-    const {sectionRef} = useContext(ScrollContext);
 
-    return (
-      <>
-        <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
-          bg-[length:100%] bg-no-repeat flex items-center justify-center flex-col gap-[34px]
-          before:content-[''] before:h-full before:w-full before:bg-black/50 before:absolute">        
-          <span className="relative text-white font-bold text-5xl text-center">
-              INSPIRATION FOR TRAVEL BY REAL PEOPLE
-          </span>
-          <span className="relative font-light italic text-[32px] text-white opacity-[55%]">
-              Touch some grass bruh.
-          </span>
-          <button className="relative rounded-[5px] border-4 border-white px-[5px] font-light text-2xl
-            hover:scale-110 hover:bg-black/50 transition-all ease-in-out">
-            <span className="px-[5px] text-white">Learn More</span>
-          </button>
+  return (
+    <>
+      <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
+        bg-[length:100%] bg-no-repeat flex items-center justify-center flex-col gap-[34px]
+        before:content-[''] before:h-full before:w-full before:bg-black/50 before:absolute">        
+        <span className="relative text-white font-bold text-5xl text-center">
+            INSPIRATION FOR TRAVEL BY REAL PEOPLE
+        </span>
+        <span className="relative font-light italic text-[32px] text-white opacity-[55%]">
+            Touch some grass bruh.
+        </span>
+        <button className="relative rounded-[5px] border-4 border-white px-[5px] font-light text-2xl
+          hover:scale-110 hover:bg-black/50 transition-all ease-in-out">
+          <span className="px-[5px] text-white">Learn More</span>
+        </button>
+      </div>
+      <div ref={sectionRef} className="py-[60px] px-[30px] bg-[#F5EFE7] w-full flex">
+        <div className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
+          grid grid-cols-[repeat(auto-fit,minmax(294px,1fr))] auto-rows-auto place-items-center gap-[20px]'>
+            {
+              blogsCard.filter((item, index) => index < cardLength).map((data) => <Cards key={data.userId} data={data}/>)
+            }
+            <button className='col-span-full w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
+              hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'
+              onClick={() => handleLoadMore()}>
+                Load More
+            </button>
         </div>
-        <div ref={sectionRef} className="py-[60px] px-[30px] bg-[#F5EFE7] w-full h-max">
-          <div className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
-            grid grid-cols-4 place-items-center gap-[40px]'>
-              {
-                blogsCard.map((data) => <Cards key={data.userId} userID={data.userId} name={data.name} title={data.title} body={data.body} profileImage={data.profileImage} date={data.date} blogImage={data.blogImage}/>)
-              }
-              <button className='col-span-4 w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
-                hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'>
-                  Load More
-              </button>
-          </div>
-        </div>
-        <Ad/>
-      </>
+      </div>
+      <div className="h-[500px] w-full py-[30px] px-[10px] flex items-center justify-center
+        gap-[80px] bg-[linear-gradient(180deg,#F5EFE7_0%,_#3E5879_100%)]">
+        <IoIosArrowBack className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("prev")}/>
+
+        {activeTestimonials.map((data, index)=> <TestimonialsCarousel key={index} data={data} index={index}/>)}
+        
+        <IoIosArrowForward className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("next")}/>
+      </div>
+      <Ad/>
+    </>
 
     );
   }
