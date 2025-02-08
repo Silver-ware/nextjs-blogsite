@@ -35,7 +35,7 @@ function Navbar(hasNavBG) {
       }
     };
 
-    console.log(window.screenY);
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bgColor]);
