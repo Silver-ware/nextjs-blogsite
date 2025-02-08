@@ -6,17 +6,17 @@ import { AiOutlineSelect } from "react-icons/ai";
 function Cards({data}) {
   return (
     <div key={data.userId} className='w-[294px] h-[406px] flex flex-col gap-2.5'>
-      <div style={{ backgroundImage: `url(${data.blogImage})`, backgroundSize: 'cover' }} className={`relative rounded-[5px] h-full w-full shadow-[0px_1px_7px_0px_#213555] 
-        bg-cover contrast-125 bg-bottom
+      <div style={{ backgroundImage: `url(${data.blogImage})`}} className={`relative rounded-[5px] h-full w-full shadow-[0px_1px_7px_0px_#213555] 
+        bg-[length:100%] contrast-125 hover:bg-[length:160%] transition-all ease-in-out cursor-pointer bg-center
         before:content-[""] before:h-full before:w-full before:bg-black/40 before:absolute before:rounded-[5px]`}>
-        <button className='relative float-right m-2 hover:scale-105'>
+        <button className='relative float-right m-2 hover:scale-105 p-1 rounded-full bg-white/50'>
           <AiOutlineSelect/>
         </button>
       </div>
       <div className='w-full h-full pb-2.5 px-2.5 flex gap-2.5 flex-col'>
         <div className='bg-transparent h-max p-2.5 w-full border-b-[1px] border-b-[#213555] shadow-[0px_2px_0px_0px_#00000040]
           flex justify-start'>
-          <span className='font-normal leading-4 text-2xl truncate'>
+          <span className='font-normal leading text-2xl truncate'>
             {data.title}
           </span>
         </div>

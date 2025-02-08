@@ -19,7 +19,6 @@ function Navbar(hasNavBG) {
     };
 
     window.addEventListener("scroll", handleScroll);
-    console.log(bgColor);
     // return () => window.removeEventLinkstener("scroll", handleScroll);
   }, [bgColor]);
   
@@ -36,7 +35,7 @@ function Navbar(hasNavBG) {
             <span className='text-[28px] font-semibold text-white'>Home</span>
         </Link>
         <Link 
-          href="/" 
+          href="/#blog" 
           className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
             p-[10px] flex items-center hover:[&>span]:opacity-100">
             <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Blog</span>
@@ -51,7 +50,7 @@ function Navbar(hasNavBG) {
             src="/Login.png"
             width={50}
             height={50}
-            className='h-[50px] cursor-pointer hover:scale-125 transition-all ease-in-out'
+            className='h-auto w-auto cursor-pointer hover:scale-125 transition-all ease-in-out'
             alt="Login Button"
           />
         </Link>

@@ -9,7 +9,8 @@ function Footer() {
           <Image
             src="/logo.png"
             width={181.4}
-            height={60}
+            height={0}
+            className='h-auto'
             alt="Logo Image"
           />
         </div>
@@ -21,7 +22,7 @@ function Footer() {
         
         <div className='p-[10px] w-max h-max flex gap-[10px] items-center'>
           <div className="drop-shadow-[0px_4px_4px_#00000040] hover:scale-125 cursor-pointer">
-            <Image src="/icons/gmail.png" width={19} height={19} alt="Gmail Logo" />
+            <Image src="/icons/gmail.png" width={19} height={0} className='h-auto w-auto' alt="Gmail Logo" />
           </div>
           <div className="drop-shadow-[0px_4px_4px_#00000040] hover:scale-125 cursor-pointer">
             <Image src="/icons/github.png" width={20} height={20} alt="Github Logo" />

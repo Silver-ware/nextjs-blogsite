@@ -75,7 +75,25 @@ const blogsCard = [
     "title": "dolorem dolore est ipsam",
     "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
     "date": "07/22/2022",
-    "blogImage": "https://plus.unsplash.com/premium_photo-1666792562670-f8a139c265ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+    "blogImage": "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmF0dXJlfGVufDB8fDB8fHww",
+  },
+  {
+    "userId": 9,
+    "name": "Hubert The Explorer",
+    "profileImage": "https://avatar.iran.liara.run/public/50",
+    "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+    "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
+    "date": "12/20/2025",
+    "blogImage": "https://images.unsplash.com/photo-1505820013142-f86a3439c5b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "userId": 10,
+    "name": "Kenneth The Explorer",
+    "profileImage": "https://avatar.iran.liara.run/public/3",
+    "title": "eum et est occaecati",
+    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+    "date": "09/10/2019",
+    "blogImage": "https://plus.unsplash.com/premium_photo-1675826774815-35b8a48ddc2c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
   },
 ]
 
@@ -108,7 +126,7 @@ const testimonialStatements = [
     "userId": 5,
     "name": "Brix",
     "statement": "This blog site is a goldmine of valuable insights! Every article is well-researched, engaging, and packed with useful information. Whether I’m looking for productivity tips, tech trends, or lifestyle advice, I always find something inspiring. Highly recommended for anyone who loves quality content!",
-    "profileImage": "https://avatar.iran.liara.run/public/92",
+    "profileImage": "https://avatar.iran.liara.run/public/50",
   },
   {
     "userId": 6,
@@ -119,23 +137,30 @@ const testimonialStatements = [
 ]
 
 export default function Home() {
-  const [firstActiveT, setFirstT] = useState(0);
-  const [lastActiveT, setLastT] = useState(3);
+  const [cardLength, setLoadLength]  = useState(8)
+  const [startActive, setStartActive] = useState(0);
+
+  const totalTestimonials = testimonialStatements.length;
 
   const handleTestimonials = (direction) => {
-      if(direction === "next"){
-        if(!(lastActiveT === testimonialStatements.length)){
-          setFirstT(firstActiveT+1);
-          setLastT(lastActiveT+1);
-        }
-      }
-      if(direction === "prev"){
-        if(!(firstActiveT === 0)){
-          setFirstT(firstActiveT-1);
-          setLastT(lastActiveT-1);
-        }
-      }
+      (direction == 'next') ?
+        setStartActive((prev) => (prev+1) % totalTestimonials):
+        setStartActive((prev) => (prev-1 + totalTestimonials) % totalTestimonials) ;
+      
+      console.log("Starting", startActive);
   }
+
+  const activeTestimonials = [
+    testimonialStatements[startActive],
+    testimonialStatements[(startActive+1) % totalTestimonials],
+    testimonialStatements[(startActive+2) % totalTestimonials],
+  ]
+
+  const handleLoadMore = () => {
+    setLoadLength(cardLength+4);
+  }
+
+
   return (
     <>
       <div className="relative h-[748px] w-full bg-[url(/backgrounds/homepage_head_bg.jpg)] bg-center 
@@ -152,14 +177,15 @@ export default function Home() {
           <span className="px-[5px] text-white">Learn More</span>
         </button>
       </div>
-      <div className="py-[60px] px-[30px] bg-[#F5EFE7] w-full h-max">
+      <div id="blog" className="py-[60px] px-[30px] bg-[#F5EFE7] w-full flex">
         <div className='w-full h-max py-[30px] px-[10px] rounded-[5px] bg-white shadow-[0px_0px_4px_-1px_#213555]
-          grid grid-cols-4 place-items-center gap-[40px]'>
+          grid grid-cols-[repeat(auto-fit,minmax(294px,1fr))] auto-rows-auto place-items-center gap-[20px]'>
             {
-              blogsCard.map((data) => <Cards data={data}/>)
+              blogsCard.filter((item, index) => index < cardLength).map((data) => <Cards key={data.userId} data={data}/>)
             }
-            <button className='col-span-4 w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
-              hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'>
+            <button className='col-span-full w-[103px] h-[33px] border-2 border-[#213555] rounded-[5px] text-[15px] text-center text-black
+              hover:scale-105 hover:border-black hover:bg-[#213555] hover:text-white transition-all ease-in-out'
+              onClick={() => handleLoadMore()}>
                 Load More
             </button>
         </div>
@@ -167,10 +193,8 @@ export default function Home() {
       <div className="h-[500px] w-full py-[30px] px-[10px] flex items-center justify-center
         gap-[80px] bg-[linear-gradient(180deg,#F5EFE7_0%,_#3E5879_100%)]">
         <IoIosArrowBack className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("prev")}/>
-        {/* var film = this.props.data.filter((item, idx) => idx < 5).map(item => {
-          return <FilmItem key={item.id} film={item} />
-        }); */}
-        {testimonialStatements.slice(firstActiveT, lastActiveT).map((data, index)=> <TestimonialsCarousel data={data} index={index}/>)}
+
+        {activeTestimonials.map((data, index)=> <TestimonialsCarousel key={index} data={data} index={index}/>)}
         
         <IoIosArrowForward className="w-16 h-16 text-white cursor-pointer hover:scale-110" onClick={() => handleTestimonials("next")}/>
       </div>
