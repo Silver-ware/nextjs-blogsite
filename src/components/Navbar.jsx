@@ -3,12 +3,23 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { ScrollContext } from './Layout';
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 
 
 function Navbar(hasNavBG) {
   const { scrollToSection } = useContext(ScrollContext);
 
   const [bgColor, setBgColor] = useState("");
+
+  const [activeNav, setActiveNav] = useState("");
+  const router = useRouter();
+  const currentPath = router.pathname;
+
+  useEffect(()=>{
+    setActiveNav(currentPath);
+  },[currentPath])
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,23 +42,22 @@ function Navbar(hasNavBG) {
       <div className="flex flex-1 min-w-[500px] px-[38px] gap-[25px] justify-end">
         <Link 
           href="/"
-          className="border-b-[3px] border-[#050D1B] cursor-pointer hover:scale-110 transition-all ease-in-out
-            p-[10px] flex items-center">
+          className={`border-b-[3px] ${activeNav == '/' ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } cursor-pointer hover:scale-110 transition-all ease-in-out
+            p-[10px] flex items-center`}>
             <span className='text-[28px] font-semibold text-white'>Home</span>
         </Link>
 
 
         <button 
-          // href="/#blog" 
           onClick={scrollToSection}
-          className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
-            p-[10px] flex items-center hover:[&>span]:opacity-100">
+          className={`border-b-[2px] ${activeNav == '/blog' ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } border-opacity-75 cursor-pointer hover:scale-110 hover:border-opacity-100 transition-all ease-in-out
+            p-[10px] flex items-center hover:[&>span]:opacity-100`}>
             <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Blog</span>
         </button>
 
 
-        <Link href="/create" className="border-b-[2px] border-[#D8C4B6] border-opacity-75 cursor-pointer hover:scale-110 transition-all ease-in-out
-            p-[10px] flex items-center hover:[&>span]:opacity-100">
+        <Link href="/create" className={`border-b-[2px] ${activeNav == '/create' ? 'border-[#050D1B]' : 'border-[#D8C4B6]' } border-opacity-75 cursor-pointer hover:scale-110 transition-all ease-in-out
+            p-[10px] flex items-center hover:[&>span]:opacity-100`}>
              <span className='text-[28px] font-semibold text-white opacity-50 group-hover:opacity-100'>Create</span>
         </Link>
       </div>
